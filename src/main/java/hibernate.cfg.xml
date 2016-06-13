@@ -17,9 +17,7 @@
 		</property>
 
 		<property name="hibernate.connection.driver_class">
-
 			com.mysql.jdbc.Driver
-
 		</property>
 
 
@@ -30,7 +28,14 @@
 
 		<property name="hibernate.connection.password">familiamea15</property>
 
-		<mapping class="ie.silvia.model.Category"/>
+		<mapping class="ie.silvia.model.Attachments"/>
+		<mapping class="ie.silvia.model.Categories"/>
+		<mapping class="ie.silvia.model.Comments"/>
+		<mapping class="ie.silvia.model.Priority"/>
+		<mapping class="ie.silvia.model.Status"/>
+		<mapping class="ie.silvia.model.Tags"/>
+		<mapping class="ie.silvia.model.Tasks"/>
+		<mapping class="ie.silvia.model.Users"/>
 
 
 	</session-factory>

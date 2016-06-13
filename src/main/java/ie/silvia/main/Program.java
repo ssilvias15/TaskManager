@@ -3,7 +3,7 @@ package ie.silvia.main;
 import org.hibernate.Session;
 
 import ie.silvia.hibernate.util.HibernateUtil;
-import ie.silvia.model.Category;
+import ie.silvia.model.Categories;
 
 public class Program {
 
@@ -15,8 +15,8 @@ public class Program {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		Category firstCat = (Category)session.get(Category.class, 2);
-		System.out.println("FIRST CATEGORY: " + firstCat.getCatName());
+		Categories firstCat = (Categories)session.get(Categories.class, 2);
+		System.out.println("FIRST CATEGORY: " + firstCat.getCatname());
 		session.getTransaction().commit();
 		
 	}
