@@ -8,6 +8,7 @@ package ie.silvia.model;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -61,7 +62,7 @@ public class Tasks implements Serializable {
     @OneToMany(mappedBy = "taskid")
     private List<Comments> commentsList;
     @JoinColumn(name = "userid", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private Users userid;
     @JoinColumn(name = "catid", referencedColumnName = "id")
     @ManyToOne

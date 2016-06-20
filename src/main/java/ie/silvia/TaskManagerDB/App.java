@@ -4,10 +4,6 @@ import java.util.Scanner;
 
 import org.jboss.logging.Logger;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
 	private static Logger THELOGGER = Logger.getLogger("SilviaLogger");

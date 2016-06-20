@@ -24,7 +24,7 @@ public class Program {
 		stat.setStatusname("Open");
 		
 		
-		session.save(stat);
+		session.save(stat); // INSERT INTO Status(...) values(...)
 		session.getTransaction().commit();
 		
 	}
