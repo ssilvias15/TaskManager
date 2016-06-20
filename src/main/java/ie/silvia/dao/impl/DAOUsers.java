@@ -10,3 +10,4 @@ public class DAOUsers extends GenericDaoHibernateImpl<Users, Integer>{
 	}
 
 }
+
