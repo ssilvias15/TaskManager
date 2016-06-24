@@ -2,6 +2,7 @@ package ie.silvia.main;
 
 import java.util.List;
 
+import ie.silvia.dao.impl.DAOTags;
 import ie.silvia.dao.impl.DAOTasks;
 import ie.silvia.dao.impl.DAOUsers;
 import ie.silvia.model.Users;
@@ -11,6 +12,7 @@ public class ProgramTest3 {
 	public static void main(String[] args) {
 		DAOUsers dao = new DAOUsers();
 		DAOTasks daoT = new DAOTasks();
+		DAOTags daoTag = new DAOTags();
 		
 		
 		
