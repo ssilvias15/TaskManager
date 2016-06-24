@@ -7,6 +7,7 @@ package ie.silvia.model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,6 +45,10 @@ public class Comments implements Serializable {
     @ManyToOne
     private Tasks taskid;
 
+    @JoinColumn(name="userid", referencedColumnName="id")
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    private Users user;
+    
     public Comments() {
     }
 
@@ -74,8 +79,18 @@ public class Comments implements Serializable {
     public void setTaskid(Tasks taskid) {
         this.taskid = taskid;
     }
+    
+    
 
-    @Override
+    public Users getUser() {
+		return user;
+	}
+
+	public void setUser(Users user) {
+		this.user = user;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);

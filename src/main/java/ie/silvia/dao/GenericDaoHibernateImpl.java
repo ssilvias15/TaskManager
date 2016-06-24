@@ -20,17 +20,17 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
 		
 		Session session = getSession();
 		session.beginTransaction();
-		PK pk = (PK)session.save(o);
+		PK primaryKey = (PK)session.save(o);
 		session.getTransaction().commit();
 		session.close();
-		return pk;
+		return primaryKey;
 	}
 
 	public T read(PK id) {
 		Session session = getSession();
-		T obiect = (T) session.get(type, id);
+		T obj = (T) session.get(type, id);
 		session.close();
-		return obiect;
+		return obj;
 
 	
 	}
@@ -38,9 +38,9 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
 	
 	public List<T> findAll() {
 		Session session = getSession();
-		List<T> toate =  session.createCriteria(type).list();
+		List<T> everyItem =  session.createCriteria(type).list();
 		session.close();
-		return toate;
+		return everyItem;
 	
 	}
 

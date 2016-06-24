@@ -46,7 +46,15 @@ public class Users implements Serializable {
     private String password;
     @OneToMany(mappedBy = "userid")
     private List<Tasks> tasksList;
-
+    
+    // user-comments mapping
+    @OneToMany(mappedBy="user")
+    private List<Comments> commentsList;
+    // user-attachments mapping
+    @OneToMany(mappedBy="user")
+    private List<Attachments> attachmentsList;
+    
+    
     public Users() {
     }
 
@@ -87,7 +95,26 @@ public class Users implements Serializable {
         this.tasksList = tasksList;
     }
 
-    @Override
+    
+    
+    
+    public List<Comments> getCommentsList() {
+		return commentsList;
+	}
+
+	public void setCommentsList(List<Comments> commentsList) {
+		this.commentsList = commentsList;
+	}
+
+	public List<Attachments> getAttachmentsList() {
+		return attachmentsList;
+	}
+
+	public void setAttachmentsList(List<Attachments> attachmentsList) {
+		this.attachmentsList = attachmentsList;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
