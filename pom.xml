@@ -218,6 +218,16 @@
     </dependency>
 
 	
+
+        <!-- JDBC -->      
+
+        <dependency>
+
+            <groupId>org.springframework</groupId>
+
+            <artifactId>spring-jdbc</artifactId>
+
+            </dependency>
 	</dependencies>
 
 
