@@ -8,8 +8,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<%@ include file="libs.jsp" %>
 </head>
 <body>
+
+<%@ include file="navbar.jsp" %>
+
 <h2>Add task</h2>
 
 <c:set var="thepath" value="/TaskManagerDB/save.htm"></c:set>

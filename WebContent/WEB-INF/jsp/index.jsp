@@ -4,14 +4,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
- 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
- 	<link rel="stylesheet" type="text/css" href="css/reset-stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+	<%@ include file="libs.jsp" %>
     
 	<title>MultiTask</title>
 </head>
@@ -19,28 +13,8 @@
 <body>
 
 <body>
-<nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              	<li class="menu-item"><a class="activePage" href="index.html">Home</a></li>
-			  	<li class="menu-item"><a href="mytasks.html">My Tasks</a></li>
-			  	<li class="menu-item"><a href="alltasks.html">All Tasks</a></li>
-			  	<li class="menu-item"><a href="create.html">Create</a></li>
-			  	<li class="menu-item"><a href="myprofile.html">My profile</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
+<!-- navbar goes here -->
+<%@ include file="navbar.jsp" %>
 
 <article class="container-body reg-form">   
 <div class="page">
@@ -62,8 +36,8 @@
 </div>
 </article>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   <script src="js/bootstrap.min.js"></script>
-   <script src="js/heading.js"></script>
+   <script src="resources/js/bootstrap.min.js"></script>
+   <script src="resources/js/heading.js"></script>
 
 </body>
 </html>
