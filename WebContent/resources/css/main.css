@@ -1,1 +1,6 @@
 @CHARSET "ISO-8859-1";
+
+ul.task_list{
+	text-decoration: none;
+	font-size: xx-large;
+}

@@ -134,9 +134,11 @@ public class Users implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "ie.silvia.model.Users[ id=" + id + " ]";
-    }
+	@Override
+	public String toString() {
+		return "Users [id=" + id + ", username=" + username + ", password=" + password + "]";
+	}
+
+    
     
 }

@@ -10,7 +10,6 @@
 	<title>MultiTask</title>
 </head>
 
-<body>
 
 <body>
 <!-- navbar goes here -->
@@ -24,19 +23,13 @@
 </div>
 
 <div class="w3-border w3-round-xlarge">
-  <h2>Recent tasks</h2>
-  <ul class="tasks_list">
+  <h2>All tasks</h2>
+  <ul>
   <c:forEach items="${TASKS}" var="task">
   	<li>${task.id} - ${task.content}</li>
   </c:forEach>
   </ul>
 </div>
-
-<table border=1>
-  <c:forEach items="${TASKS}" var="task">
-  	<tr><td>${task.id} - ${task.content}</td></tr>
-  </c:forEach>
-  </table>
 
 
 </div>

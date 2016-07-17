@@ -3,6 +3,6 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
- 	<link rel="stylesheet" type="text/css" href="resources/css/reset-stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+ 	<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/reset-stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/main.css">

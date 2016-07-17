@@ -10,13 +10,10 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              	<li class="menu-item"><a class="activePage" href="index.htm">Home</a></li>
-			  	<li class="menu-item"><a href="mytasks.htm">My Tasks</a></li>
-			  	<li class="menu-item"><a href="alltasks.htm">All Tasks</a></li>
-			  	<li class="menu-item"><a href="create.htm">Create</a></li>
-			  	<li class="menu-item"><a href="myprofile.htm">My profile</a></li>
-			  	<li class="menu-item"><a href="dashboard/dashboard.htm">Dashboard</a></li>
-			  	<li class="menu-item"><a href="logout">Logout</a></li>
+            	<li class="menu-item"><a class="activePage" href="<%= request.getContextPath() %>/index.htm">Home</a></li>
+			  	<li class="menu-item"><a href="<%= request.getContextPath() %>/dashboard/adduser.htm">Create User</a></li>
+			  	<li class="menu-item"><a href="<%= request.getContextPath() %>/dashboard/allusers.htm">View all users</a></li>
+			  	<li class="menu-item"><a href="<%= request.getContextPath() %>/logout">Logout</a></li>
             </ul>
           </div>
         </div>

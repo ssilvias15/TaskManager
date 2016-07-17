@@ -22,18 +22,34 @@ public class HelloController {
 	}
 	
 	@RequestMapping(value="/index.htm", method=RequestMethod.GET)
-	public ModelAndView helloMethod(){
+	public ModelAndView viewRecentTasks(){
 		List<Tasks> allTasks = dao.findAll();
+		
+		List<Tasks> recentTasks = null;
+		if(allTasks.size() > 5){
+			recentTasks = allTasks.subList(0, 4);
+		}else{
+			recentTasks = allTasks;
+		}
 		 ModelAndView mav = new ModelAndView("index");
+		 mav.addObject("TASKS", recentTasks);
+		return mav;
+	}
+	
+	@RequestMapping(value="/alltasks.htm", method=RequestMethod.GET)
+	public ModelAndView viewAllTasks(){
+		List<Tasks> allTasks = dao.findAll();
+		 ModelAndView mav = new ModelAndView("alltasks");
 		 mav.addObject("TASKS", allTasks);
 		return mav;
 	}
 	
 	
 	@RequestMapping(value="/mytasks.htm", method=RequestMethod.GET)
-	public ModelAndView pizzaMethod(){
+	public ModelAndView viewMyTasks(){
 		return new ModelAndView("mytasks");  // WEB-INF/jsp/mytasks.jsp
 	}
+	
 	
 	@RequestMapping(value="/create.htm", method = RequestMethod.GET)
 	public ModelAndView task(){
