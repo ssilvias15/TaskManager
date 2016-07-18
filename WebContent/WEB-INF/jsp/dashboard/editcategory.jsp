@@ -2,37 +2,24 @@
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-<%@ include file="libs.jsp" %>
+<title>Edit category</title>
 </head>
 <body>
-
-<%@ include file="navbar.jsp" %>
-
-<h2>Add task</h2>
-
-<c:set var="thepath" value="/TaskManagerDB/save.htm"></c:set>
+<h2>Edit category</h2>
+<c:set var="thepath" value="/TaskManagerDB/dashboard/editcategory.htm"></c:set>
 
 PATH: ${thepath}
 
 <form:form method="POST" action="${thepath}">
-	Content: <form:input path="content"/>
-	<br/>
-	Name: <form:input path="taskname"/>
-	<br/>
-	Category: <form:select path="categoryId" items="${OPTIONS}"></form:select>
-	<br/>
-	User: <form:select path="userSpringIdentifier" items="${USER_OPTIONS}"></form:select>
+	Category ID: <form:input path="id"/>
+	Category name: <form:input path="catname"/>
 	<br/>
 	<input type="submit"/>
 </form:form>
-
-
-
 </body>
 </html>
