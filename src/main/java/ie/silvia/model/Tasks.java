@@ -83,6 +83,9 @@ public class Tasks implements Serializable {
     // for Spring form
     @Transient
     private Integer categoryId;
+    
+    @Transient 
+    private Integer prioritySpringIdentifier;
 
     public Tasks() {
     }
@@ -208,7 +211,17 @@ public class Tasks implements Serializable {
         return hash;
     }
 
-    @Override
+	
+	
+    public Integer getPrioritySpringIdentifier() {
+		return prioritySpringIdentifier;
+	}
+
+	public void setPrioritySpringIdentifier(Integer prioritySpringIdentifier) {
+		this.prioritySpringIdentifier = prioritySpringIdentifier;
+	}
+
+	@Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Tasks)) {

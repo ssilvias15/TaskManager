@@ -16,6 +16,16 @@
 <!-- navbar goes here -->
 <%@ include file="navbar.jsp" %>
 
+
+<%
+	String tasksaved = request.getParameter("tasksaved");
+	if(tasksaved != null){
+		%>
+		<span style="color: #FF0000">Task has been successfully saved</span>
+		<%
+	}
+%>
+
 <article class="container-body reg-form">   
 <div class="page">
 

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@ include file="libs.jsp" %>
-<title>Insert title here</title>
+<title>Dashboard</title>
 </head>
 <body>
 <!-- navbar goes here -->
@@ -27,6 +27,13 @@
 			<%
 		}
 		
+		String priorityDeleted = request.getParameter("prioritydeleted");
+		if(priorityDeleted != null){
+			%>
+			<span style='color: #FF0000'>Priority has been successfully deleted</span>
+			<%
+		}
+		
 	%>
 	 <h2>All users</h2>
   <ul>
@@ -41,7 +48,16 @@
   	<li>${category.id} : ${category.catname} <a href="<%= request.getContextPath() %>/dashboard/editcategory.htm?categoryid=${category.id}">Edit</a> <a href="<%= request.getContextPath() %>/dashboard/deletecategory.htm?categoryid=${category.id}" onclick="return confirm('Delete category ${category.catname}');">Delete</a></li>
   </c:forEach>
   </ul>
-  <a href="<%= request.getContextPath() %>/dashboard/addcategory.htm">Add new Category</a>
+  <a href="<%= request.getContextPath() %>/dashboard/addcategory.htm">Add New Category</a>
+  
+  <h2>All priorities</h2>
+  <ul>
+  	
+  	<c:forEach items="${PRIORITIES}" var="priority">
+  		<li>${priority.id} - ${priority.priorname}  <a href="<%= request.getContextPath() %>/dashboard/editpriority.htm?priorityid=${priority.id}">Edit</a> <a href="<%= request.getContextPath() %>/dashboard/deletepriority.htm?priorityid=${priority.id}" onclick="return confirm('Delete priority ${priority.priorname}');">Delete</a></li> 
+  	</c:forEach>
+  </ul>
+   <a href="<%= request.getContextPath() %>/dashboard/addpriority.htm">Add New Priority</a>
 </div>
 </body>
 </html>
