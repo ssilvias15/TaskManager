@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-import ie.silvia.model.upload.File;
+import ie.silvia.model.upload.FileBucket;
 import ie.silvia.model.upload.FileValidator;
 
 @Controller
@@ -28,13 +28,13 @@ public class AttachmentUploadController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getForm(Model model) {
-		File fileModel = new File();
+		FileBucket fileModel = new FileBucket();
 		model.addAttribute("file", fileModel);
 		return "file";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String fileUpload(Model model, @Validated File file, BindingResult result) {
+	public String fileUpload(Model model, @Validated FileBucket file, BindingResult result) {
 
 		String resultVal = "successFile";
 		if(result.hasErrors()){

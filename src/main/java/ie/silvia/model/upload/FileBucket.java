@@ -2,7 +2,7 @@ package ie.silvia.model.upload;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class File {
+public class FileBucket {
 
 	private MultipartFile file;
 

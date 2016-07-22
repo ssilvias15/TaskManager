@@ -1,30 +1,40 @@
 package ie.silvia.model.upload;
 
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+
+@Component
+
 public class FileValidator implements Validator {
 
-	public boolean supports(Class<?> paramClass) {
+     
 
-		return File.class.equals(paramClass);
+    public boolean supports(Class<?> clazz) {
 
-	}
+        return FileBucket.class.isAssignableFrom(clazz);
 
+    }
 
+ 
 
-	public void validate(Object obj, Errors errors) {
-		
-		File file = (File) obj;
-		System.out.println("Validating file: " + file);
-		System.out.println("PROPERTY: " + file.getFile());
-		
-		  if (file.getFile().getSize() == 0) {
+    public void validate(Object obj, Errors errors) {
 
-		   errors.rejectValue("file", "valid.file");
+        FileBucket file = (FileBucket) obj;
 
-		  }
+         
 
-	}
+        if(file.getFile()!=null){
+
+            if (file.getFile().getSize() == 0) {
+
+                errors.rejectValue("file", "missing.file");
+
+            }
+
+        }
+
+    }
 
 }
