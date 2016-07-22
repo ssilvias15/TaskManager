@@ -87,6 +87,9 @@ public class Tasks implements Serializable {
     @Transient 
     private Integer prioritySpringIdentifier;
 
+    @Transient
+    private Integer statusSpringIdentifier;
+    
     public Tasks() {
     }
 
@@ -219,6 +222,16 @@ public class Tasks implements Serializable {
 
 	public void setPrioritySpringIdentifier(Integer prioritySpringIdentifier) {
 		this.prioritySpringIdentifier = prioritySpringIdentifier;
+	}
+
+	
+	
+	public Integer getStatusSpringIdentifier() {
+		return statusSpringIdentifier;
+	}
+
+	public void setStatusSpringIdentifier(Integer statusSpringIdentifier) {
+		this.statusSpringIdentifier = statusSpringIdentifier;
 	}
 
 	@Override

@@ -29,9 +29,6 @@
 <article class="container-body reg-form">   
 <div class="page">
 
-<div class="w3-border w3-round-xlarge">
-  <h2>My tasks</h2>
-</div>
 
 <div class="w3-border w3-round-xlarge">
   <h2>Recent tasks</h2>

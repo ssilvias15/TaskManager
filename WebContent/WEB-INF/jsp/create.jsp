@@ -30,6 +30,8 @@ PATH: ${thepath}
 	User: <form:select path="userSpringIdentifier" items="${USER_OPTIONS}"></form:select>
 	<br/>
 	Priority: <form:select path="prioritySpringIdentifier" items="${PRIORITY_OPTIONS}"></form:select>
+	<br/>
+	Status: <form:select path = "statusSpringIdentifier" items="${STATUS_OPTIONS}"></form:select>
 	<input type="submit"/>
 </form:form>
 

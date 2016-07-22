@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,22 +14,25 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ie.silvia.dao.impl.DAOCategories;
 import ie.silvia.dao.impl.DAOPriority;
+import ie.silvia.dao.impl.DAOStatus;
 import ie.silvia.dao.impl.DAOTasks;
 import ie.silvia.dao.impl.DAOUsers;
 import ie.silvia.model.Categories;
 import ie.silvia.model.Priority;
+import ie.silvia.model.Status;
 import ie.silvia.model.Tasks;
 import ie.silvia.model.Users;
 
 @Controller
-public class HelloController {
+public class HomeController {
 
 	private DAOTasks dao = new DAOTasks();
 	private DAOCategories daoCategories = new DAOCategories();
 	private DAOUsers daoUsers = new DAOUsers();
 	private DAOPriority daoPriority = new DAOPriority();
+	private DAOStatus daoStatus = new DAOStatus();
 	
-	public HelloController(){
+	public HomeController(){
 		System.out.println("CREATING CONTROLLER");
 	}
 	
@@ -57,7 +62,16 @@ public class HelloController {
 	
 	@RequestMapping(value="/mytasks.htm", method=RequestMethod.GET)
 	public ModelAndView viewMyTasks(){
-		return new ModelAndView("mytasks");  // WEB-INF/jsp/mytasks.jsp
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String name = user.getUsername();
+		System.out.println("CURRENT USER USERNAME: " + name);
+		ModelAndView mav = new ModelAndView("mytasks");
+		// find the tasks for the currently logged in user
+		Users currentUser = daoUsers.getUserByUsername(name);
+		List<Tasks> tasks = dao.getTasksByUserId(currentUser);
+		mav.addObject("CURRENT_USER", currentUser);
+		mav.addObject("MY_TASKS", tasks);
+		return mav;  // WEB-INF/jsp/mytasks.jsp
 	}
 	
 	
@@ -67,7 +81,8 @@ public class HelloController {
 		
 		List<Categories> categories = daoCategories.findAll();
 		List<Users> users = daoUsers.findAll();
-		List<Priority> priorities = daoPriority.findAll(); 
+		List<Priority> priorities = daoPriority.findAll();
+		List<Status> statuses = daoStatus.findAll();
 		Map<Integer, String> options = new HashMap<>();
 		for(Categories cat : categories){
 			options.put(cat.getId(), cat.getCatname());
@@ -80,9 +95,17 @@ public class HelloController {
 		for(Priority priority : priorities){
 			priorityOptions.put(priority.getId(), priority.getPriorname());
 		}
+		
+		Map<Integer, String> statusOptions = new HashMap<>();
+		for(Status status : statuses){
+			statusOptions.put(status.getId(), status.getStatusname());
+		}
+		
 		mav.addObject("OPTIONS", options);
 		mav.addObject("USER_OPTIONS", userOptions);
 		mav.addObject("PRIORITY_OPTIONS", priorityOptions);
+		mav.addObject("STATUS_OPTIONS", statusOptions);
+		
 		return mav;
 	}
 
@@ -98,6 +121,9 @@ public class HelloController {
 		
 		Priority priority = daoPriority.read(task.getPrioritySpringIdentifier());
 		task.setPriorityid(priority);
+		
+		Status status = daoStatus.read(task.getStatusSpringIdentifier());
+		task.setStatusid(status);
 		System.out.println("Saving task!!! "  + task);
 		System.out.println("ASSOCIATED CATEGORY: " + task.getCatid());
 		dao.create(task);

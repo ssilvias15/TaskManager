@@ -7,10 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit User</title>
 </head>
 <body>
-<h2>TEST EDIT USER</h2>
+<h2>EDIT USER</h2>
 
 EDITING USER: ${USER_ID}<br/><br/>
 

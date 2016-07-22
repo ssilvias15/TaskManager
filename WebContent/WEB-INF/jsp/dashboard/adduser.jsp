@@ -7,10 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Add User</title>
 </head>
 <body>
-<h2>TEST ADD USER</h2>
+<h2>ADD USER</h2>
 
 <!-- User add form -->
 <c:set var="thepath" value="/TaskManagerDB/dashboard/adduser.htm"></c:set>

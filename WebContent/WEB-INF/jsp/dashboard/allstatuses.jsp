@@ -6,19 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@ include file="../libs.jsp" %>
-<title>All Users</title>
+<title>All Statuses</title>
 
 </head>
 <body>
 <!-- navbar goes here -->
 <%@ include file="../navbar_dashboard.jsp" %>
 
-<h2>View all users</h2>
+<h2>View all statuses</h2>
 <div class="w3-border w3-round-xlarge">
-  <h2>All users</h2>
+  <h2>All Statuses</h2>
   <ul>
-  <c:forEach items="${USERS}" var="user">
-  	<li>${user.id} - ${user.username} [ ${user.password} ]</li>
+  <c:forEach items="${STATUSES}" var="status">
+  	<li>${status.id} - ${status.statusname}</li>
   </c:forEach>
   </ul>
 </div>

@@ -7,18 +7,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add Priority</title>
+<title>Add Status</title>
 </head>
 <body>
-<h2>ADD PRIORITY</h2>
+<h2>ADD STATUS</h2>
 
 <!-- User add form -->
-<c:set var="thepath" value="/TaskManagerDB/dashboard/addpriority.htm"></c:set>
+<c:set var="thepath" value="/TaskManagerDB/dashboard/addstatus.htm"></c:set>
 
 PATH: ${thepath}
 
 <form:form method="POST" action="${thepath}">
-	Priority name: <form:input path="priorname"/>
+	Status name: <form:input path="statusname"/>
 	<br/>
 	<br/>
 	<input type="submit"/>

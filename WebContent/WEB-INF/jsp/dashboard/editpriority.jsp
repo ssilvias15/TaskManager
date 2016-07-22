@@ -7,10 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit Priority</title>
 </head>
 <body>
-<h2>TEST EDIT PRIORITY</h2>
+<h2>EDIT PRIORITY</h2>
 
 
 <!-- User add form -->

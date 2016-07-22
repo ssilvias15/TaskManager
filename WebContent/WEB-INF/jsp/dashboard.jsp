@@ -58,6 +58,15 @@
   	</c:forEach>
   </ul>
    <a href="<%= request.getContextPath() %>/dashboard/addpriority.htm">Add New Priority</a>
+   
+     <h2>All statuses</h2>
+  <ul>
+  	
+  	<c:forEach items="${STATUSES}" var="status">
+  		<li>${status.id} - ${status.statusname}  <a href="<%= request.getContextPath() %>/dashboard/editstatus.htm?statusid=${status.id}">Edit</a> <a href="<%= request.getContextPath() %>/dashboard/deletestatus.htm?statusid=${status.id}" onclick="return confirm('Delete status ${status.statusname}');">Delete</a></li> 
+  	</c:forEach>
+  </ul>
+   <a href="<%= request.getContextPath() %>/dashboard/addstatus.htm">Add New Status</a>
 </div>
 </body>
 </html>
