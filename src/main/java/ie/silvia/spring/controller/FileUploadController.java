@@ -22,6 +22,8 @@ import ie.silvia.model.upload.FileBucket;
 import ie.silvia.model.upload.FileValidator;
 import ie.silvia.model.upload.MultiFileBucket;
 import ie.silvia.model.upload.MultiFileValidator;
+import ie.silvia.model.upload.UploadConstants;
+import ie.silvia.model.upload.UploadService;
 
  
 
@@ -34,10 +36,6 @@ public class FileUploadController {
 
  
 
-    private static String UPLOAD_LOCATION="C:/mytemp/";
-//	private static String UPLOAD_LOCATION="";
-
- 
 
     // @Autowired
 
@@ -101,7 +99,8 @@ public class FileUploadController {
 
             BindingResult result, ModelMap model) throws IOException {
 
- 
+    	System.out.println("UPLOADING AN ATTACHMENT FOR TASK ID = " + fileBucket.getTaskId());
+    	UploadService.createDirectory(fileBucket.getTaskId());
 
         if (result.hasErrors()) {
 
@@ -120,13 +119,13 @@ public class FileUploadController {
 
             String filenameElements[] = fileBucket.getFile().getOriginalFilename().split("\\\\");
             String filename = filenameElements[filenameElements.length-1];
-            FileCopyUtils.copy(fileBucket.getFile().getBytes(), new File( UPLOAD_LOCATION + filename));
+            FileCopyUtils.copy(fileBucket.getFile().getBytes(), new File( UploadConstants.UPLOAD_PATH + fileBucket.getTaskId() + "/"+ filename));
 
             String fileName = multipartFile.getOriginalFilename();
 
             model.addAttribute("fileName", fileName);
 
-            return "success";
+            return "redirect:/tasks/viewtask/"+fileBucket.getTaskId()+"/";
 
         }
 
@@ -172,7 +171,7 @@ public class FileUploadController {
 
             for (FileBucket bucket : multiFileBucket.getFiles()) {
 
-                FileCopyUtils.copy(bucket.getFile().getBytes(), new File(UPLOAD_LOCATION + bucket.getFile().getOriginalFilename()));
+                FileCopyUtils.copy(bucket.getFile().getBytes(), new File(UploadConstants.UPLOAD_PATH + bucket.getFile().getOriginalFilename()));
 
                 fileNames.add(bucket.getFile().getOriginalFilename());
 
