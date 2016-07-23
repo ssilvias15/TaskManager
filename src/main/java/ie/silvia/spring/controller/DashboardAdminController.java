@@ -154,6 +154,7 @@ public class DashboardAdminController {
 		ModelAndView mav = new ModelAndView("redirect:/dashboard/dashboard.htm");
 		return mav;
 	}
+	// /deletepriority.htm?priorityid=3
 	@RequestMapping(value = "/deletepriority.htm", method = RequestMethod.GET)
 	public ModelAndView deletePriority(@RequestParam("priorityid") Integer id) {
 		ModelAndView mav = new ModelAndView("redirect:/dashboard/dashboard.htm?prioritydeleted=ok");

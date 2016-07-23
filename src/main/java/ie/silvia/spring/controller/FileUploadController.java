@@ -117,7 +117,6 @@ public class FileUploadController {
 
  
 
-            // Now do something with file...
 
             String filenameElements[] = fileBucket.getFile().getOriginalFilename().split("\\\\");
             String filename = filenameElements[filenameElements.length-1];
