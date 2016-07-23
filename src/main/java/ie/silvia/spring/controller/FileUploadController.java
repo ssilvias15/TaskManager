@@ -34,8 +34,8 @@ public class FileUploadController {
 
  
 
-//    private static String UPLOAD_LOCATION="C:/mytemp/";
-	private static String UPLOAD_LOCATION="";
+    private static String UPLOAD_LOCATION="C:/mytemp/";
+//	private static String UPLOAD_LOCATION="";
 
  
 
@@ -119,7 +119,9 @@ public class FileUploadController {
 
             // Now do something with file...
 
-            FileCopyUtils.copy(fileBucket.getFile().getBytes(), new File( UPLOAD_LOCATION + fileBucket.getFile().getOriginalFilename()));
+            String filenameElements[] = fileBucket.getFile().getOriginalFilename().split("\\\\");
+            String filename = filenameElements[filenameElements.length-1];
+            FileCopyUtils.copy(fileBucket.getFile().getBytes(), new File( UPLOAD_LOCATION + filename));
 
             String fileName = multipartFile.getOriginalFilename();
 
