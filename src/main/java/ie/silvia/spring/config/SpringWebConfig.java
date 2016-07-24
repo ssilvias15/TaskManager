@@ -15,6 +15,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import ie.silvia.model.upload.UploadConstants;
+
 
 
 @EnableWebMvc 
@@ -34,6 +36,8 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+		registry.addResourceHandler("/files/**").addResourceLocations("file:///"+UploadConstants.UPLOAD_PATH);
+
 
 	}
 

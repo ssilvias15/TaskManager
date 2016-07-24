@@ -8,19 +8,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<%@ include file="libs.jsp" %>
+<%@ include file="../libs.jsp" %>
 </head>
 <body>
 
-<%@ include file="navbar.jsp" %>
+<%@ include file="../navbar.jsp" %>
 
 <h2>Add task</h2>
 
-<c:set var="thepath" value="/TaskManagerDB/save.htm?newtask=true"></c:set>
+
+<c:set var="thepath" value="/TaskManagerDB/save.htm?newtask=false"></c:set>
 
 PATH: ${thepath}
 
 <form:form method="POST" action="${thepath}">
+	TASK ID: <form:input path="id"/>
 	Content: <form:input path="content"/>
 	<br/>
 	Name: <form:input path="taskname"/>

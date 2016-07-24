@@ -23,7 +23,7 @@
 	<hr/>
 	<ul>
 	<c:forEach items="${MY_TASKS}" var="task">
-		<li>${task.id} - ${task.content}: status: ${task.statusid.statusname}</li>
+		<li>${task.id} - ${task.content}: status: ${task.statusid.statusname} <a href="<%= request.getContextPath() %>/tasks/viewtask/${task.id}">View</a>  <a href="<%= request.getContextPath() %>/tasks/edit/${task.id}">Edit</a></li>
 	</c:forEach>
 	</ul>
 </body>

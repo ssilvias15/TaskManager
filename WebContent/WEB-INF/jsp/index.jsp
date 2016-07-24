@@ -34,17 +34,10 @@
   <h2>Recent tasks</h2>
   <ul class="tasks_list">
   <c:forEach items="${TASKS}" var="task">
-  	<li>${task.id} - ${task.content}</li>
+  	<li>${task.id} - ${task.content} <a href="<%= request.getContextPath() %>/tasks/viewtask/${task.id}">View</a>  <a href="<%= request.getContextPath() %>/tasks/edit/${task.id}">Edit</a></li>
   </c:forEach>
   </ul>
 </div>
-
-<table border=1>
-  <c:forEach items="${TASKS}" var="task">
-  	<tr><td>${task.id} - ${task.content}</td></tr>
-  </c:forEach>
-  </table>
-
 
 </div>
 </article>

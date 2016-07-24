@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ie.silvia.dao.impl.DAOCategories;
@@ -75,45 +76,29 @@ public class HomeController {
 	}
 	
 	
+	
 	@RequestMapping(value="/create.htm", method = RequestMethod.GET)
 	public ModelAndView task(){
 		ModelAndView mav = new ModelAndView("create", "command", new Tasks());
+		FormOptionsService fos = new FormOptionsService(daoCategories, daoUsers, daoPriority, daoStatus);
+		// TODO: cp1
+		Map<Integer, String> categoryOptions = fos.getCategoryOptions();
+		Map<Integer, String> userOptions = fos.getUserOptions();
+		Map<Integer, String> priorityOptions = fos.getPriorityOptions();
+		Map<Integer, String> statusOptions = fos.getStatusOptions();
 		
-		List<Categories> categories = daoCategories.findAll();
-		List<Users> users = daoUsers.findAll();
-		List<Priority> priorities = daoPriority.findAll();
-		List<Status> statuses = daoStatus.findAll();
-		Map<Integer, String> options = new HashMap<>();
-		for(Categories cat : categories){
-			options.put(cat.getId(), cat.getCatname());
-		}
-		Map<Integer, String> userOptions = new HashMap<>();
-		for(Users user : users){
-			userOptions.put(user.getId(), user.getUsername());
-		}
-		Map<Integer, String> priorityOptions = new HashMap<>();
-		for(Priority priority : priorities){
-			priorityOptions.put(priority.getId(), priority.getPriorname());
-		}
-		
-		Map<Integer, String> statusOptions = new HashMap<>();
-		for(Status status : statuses){
-			statusOptions.put(status.getId(), status.getStatusname());
-		}
-		
-		mav.addObject("OPTIONS", options);
+		mav.addObject("OPTIONS", categoryOptions);
 		mav.addObject("USER_OPTIONS", userOptions);
 		mav.addObject("PRIORITY_OPTIONS", priorityOptions);
 		mav.addObject("STATUS_OPTIONS", statusOptions);
 		
+		// /cp1
 		return mav;
 	}
 
-	
 	@RequestMapping(value = "/save.htm", method=RequestMethod.POST)
-	public ModelAndView saveTask(@ModelAttribute("task")Tasks task){
+	public ModelAndView saveTask(@ModelAttribute("task")Tasks task, @RequestParam("newtask") Boolean newTask){
 		ModelAndView mav = new ModelAndView("redirect:/index.htm?tasksaved=ok");
-		// task.setCatid(catid);
 		Categories cat = daoCategories.read(task.getCategoryId());
 		task.setCatid(cat);
 		Users associatedUser = daoUsers.read(task.getUserSpringIdentifier());
@@ -126,7 +111,11 @@ public class HomeController {
 		task.setStatusid(status);
 		System.out.println("Saving task!!! "  + task);
 		System.out.println("ASSOCIATED CATEGORY: " + task.getCatid());
-		dao.create(task);
+		if(newTask){
+			dao.create(task);
+		}else{
+			dao.update(task);
+		}
 		
 		return mav;
 	}

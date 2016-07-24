@@ -19,14 +19,14 @@
 <div class="page">
 
 <div class="w3-border w3-round-xlarge">
-  <h2>My tasks</h2>
+  <h2>All tasks</h2>
 </div>
 
 <div class="w3-border w3-round-xlarge">
   <h2>All tasks</h2>
   <ul>
   <c:forEach items="${TASKS}" var="task">
-  	<li>${task.id} - ${task.content}</li>
+  	<li>${task.id} - ${task.content} <a href="<%= request.getContextPath() %>/tasks/viewtask/${task.id}">View</a> <a href="<%= request.getContextPath() %>/tasks/edit/${task.id}">Edit</a></li>
   </c:forEach>
   </ul>
 </div>
