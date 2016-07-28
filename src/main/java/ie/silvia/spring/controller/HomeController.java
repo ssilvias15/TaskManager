@@ -1,11 +1,8 @@
 package ie.silvia.spring.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +20,7 @@ import ie.silvia.model.Priority;
 import ie.silvia.model.Status;
 import ie.silvia.model.Tasks;
 import ie.silvia.model.Users;
+import ie.silvia.service.UsersService;
 
 @Controller
 public class HomeController {
@@ -32,6 +30,7 @@ public class HomeController {
 	private DAOUsers daoUsers = new DAOUsers();
 	private DAOPriority daoPriority = new DAOPriority();
 	private DAOStatus daoStatus = new DAOStatus();
+	private UsersService usersService = new UsersService(daoUsers);
 	
 	public HomeController(){
 		System.out.println("CREATING CONTROLLER");
@@ -63,12 +62,8 @@ public class HomeController {
 	
 	@RequestMapping(value="/mytasks.htm", method=RequestMethod.GET)
 	public ModelAndView viewMyTasks(){
-		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String name = user.getUsername();
-		System.out.println("CURRENT USER USERNAME: " + name);
 		ModelAndView mav = new ModelAndView("mytasks");
-		// find the tasks for the currently logged in user
-		Users currentUser = daoUsers.getUserByUsername(name);
+		Users currentUser = usersService.getUserFromSecurity();
 		List<Tasks> tasks = dao.getTasksByUserId(currentUser);
 		mav.addObject("CURRENT_USER", currentUser);
 		mav.addObject("MY_TASKS", tasks);

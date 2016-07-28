@@ -36,11 +36,12 @@
 			Content: ${TASK.content} </br>
 
 
-			<hr />
+			<hr/>
+			
 			<!-- Spring upload form -->
 
 			<c:set var="thepath" value="/TaskManagerDB/singleUpload?taskid="></c:set>
-			<form:form method="POST" action="${thepath}"
+			<form:form method="POST" action="${thepath}" 
 				modelAttribute="fileBucket" enctype="multipart/form-data"
 				class="form-horizontal">
 
@@ -110,6 +111,16 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/heading.js"></script>
+
+	<hr />
+			<c:set var="thepathVT" value="/TaskManagerDB/tasks/viewtask"></c:set>
+			<form:form method="POST" action="${thepathVT}" 
+				
+				class="form-horizontal">
+				<form:hidden path="springTaskId" />
+				COMMENT: <form:input path="commenttext"/> <br/>
+				<input type="submit" value = "save comment"/>
+			</form:form>
 
 </body>
 </html>

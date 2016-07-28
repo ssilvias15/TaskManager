@@ -12,9 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ie.silvia.dao.impl.DAOComments;
 import ie.silvia.dao.impl.DAOTasks;
+import ie.silvia.dao.impl.DAOUsers;
 import ie.silvia.model.Comments;
 import ie.silvia.model.Tasks;
+import ie.silvia.model.Users;
 import ie.silvia.model.upload.FileBucket;
+import ie.silvia.service.UsersService;
 
 @Controller
 @RequestMapping("/tasks")
@@ -22,6 +25,8 @@ public class TasksController {
 
 	private DAOTasks dao = new DAOTasks();
 	private DAOComments daoComments = new DAOComments();
+	
+	private UsersService usersService = new UsersService(new DAOUsers());
 	private FormOptionsService fos = new FormOptionsService();
 
 	@RequestMapping(value = "/edit/{taskid}")
@@ -57,7 +62,8 @@ public class TasksController {
 		Tasks task = dao.read(taskid);
 
 		Comments comment = new Comments();
-		comment.setTaskid(task);
+		// comment.setTaskid(task);
+		comment.setSpringTaskId(task.getId());
 
 		ModelAndView mav = new ModelAndView("tasks/viewtask", "command" , comment);
 		mav.addObject("TASK", task);
@@ -67,10 +73,15 @@ public class TasksController {
 	@RequestMapping(value = "/viewtask", method = RequestMethod.POST)
 	public ModelAndView addCommentToTask(@ModelAttribute("comment")Comments comment){
 		System.out.println("SAVING COMMENT: " + comment);
-		System.out.println("COMMENT ASSOCIATED TO TASK: " + comment.getTaskid());
-		Integer taskId = comment.getTaskid().getId(); // never null
-		daoC
-		ModelAndView mav = new ModelAndView("redirect:/viewtask/"+taskId);
+		
+		Tasks task = dao.read(comment.getSpringTaskId());
+		Integer taskId = task.getId();
+		comment.setTaskid(task);
+		Users user = usersService.getUserFromSecurity();
+		System.out.println("ASSOCIATED USER: " + user);
+		comment.setUser(user);
+		daoComments.create(comment);
+		ModelAndView mav = new ModelAndView("redirect:viewtask/"+taskId);
 		return mav;
 	}
 

@@ -47,8 +47,11 @@ public class Comments implements Serializable {
     @ManyToOne
     private Tasks taskid;
     
-//    @Transient
-//    private Integer springTaskId;
+    @Transient
+    private Integer springTaskId;
+    
+    @Transient
+    private Integer springUserId;
 
     @JoinColumn(name="userid", referencedColumnName="id")
     @ManyToOne(cascade=CascadeType.PERSIST)
@@ -93,6 +96,24 @@ public class Comments implements Serializable {
 
 	public void setUser(Users user) {
 		this.user = user;
+	}
+
+	
+	
+	public Integer getSpringTaskId() {
+		return springTaskId;
+	}
+
+	public void setSpringTaskId(Integer springTaskId) {
+		this.springTaskId = springTaskId;
+	}
+
+	public Integer getSpringUserId() {
+		return springUserId;
+	}
+
+	public void setSpringUserId(Integer springUserId) {
+		this.springUserId = springUserId;
 	}
 
 	@Override
