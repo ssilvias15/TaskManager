@@ -6,6 +6,7 @@
 package ie.silvia.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -44,6 +46,9 @@ public class Comments implements Serializable {
     @JoinColumn(name = "taskid", referencedColumnName = "id")
     @ManyToOne
     private Tasks taskid;
+    
+//    @Transient
+//    private Integer springTaskId;
 
     @JoinColumn(name="userid", referencedColumnName="id")
     @ManyToOne(cascade=CascadeType.PERSIST)
