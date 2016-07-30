@@ -13,9 +13,10 @@
               	<li class="menu-item"><a class="activePage" href="<%= request.getContextPath() %>/index.htm">Home</a></li>
 			  	<li class="menu-item"><a href="<%= request.getContextPath() %>/mytasks.htm">My Tasks</a></li>
 			  	<li class="menu-item"><a href="<%= request.getContextPath() %>/alltasks.htm">All Tasks</a></li>
+			  	<li class="menu-item"><a href="<%= request.getContextPath() %>/recenttasks.htm">Recent Tasks</a></li>
 			  	<li class="menu-item"><a href="<%= request.getContextPath() %>/create.htm">Create</a></li>
-			  	<li class="menu-item"><a href="<%= request.getContextPath() %>/myprofile.htm">My profile</a></li>
 			  	<li class="menu-item"><a href="<%= request.getContextPath() %>/dashboard/dashboard.htm">Dashboard</a></li>
+			  	<li class="menu-item"><a href="<%= request.getContextPath() %>/users/profile/">My Profile</a></li>
 			  	<li class="menu-item"><a href="<%= request.getContextPath() %>/logout">Logout</a></li>
             </ul>
           </div>

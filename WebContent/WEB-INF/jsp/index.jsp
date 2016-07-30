@@ -39,6 +39,14 @@
   </ul>
 </div>
 
+<h2>Most recent comments to my tasks</h2>
+<ul>
+	
+	<c:forEach items="${RECENT_COMMENTS}" var = "comment">
+		<li>${comment.commenttext} <a href="<%= request.getContextPath() %>/tasks/viewtask/${comment.taskid.id}">View ${comment.taskid.taskname}</a></li>
+	</c:forEach>
+</ul>
+
 </div>
 </article>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

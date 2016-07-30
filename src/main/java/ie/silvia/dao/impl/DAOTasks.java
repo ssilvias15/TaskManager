@@ -25,17 +25,35 @@ public class DAOTasks extends GenericDaoHibernateImpl<Tasks, Integer>{
 		Criteria criteria = session.createCriteria(Tasks.class);
 		System.out.println("FINDING ALL TASKS");
 		tasksForUser = (List<Tasks>) criteria.add(Restrictions.eq("userid", user)).list();
+		// load associated comments
+		
+		for(Tasks t : tasksForUser){
+			// test
+			t.getCommentsList();
+		}
 		System.out.println("TASKS FOR CURRENT USER: " + tasksForUser);
 		return tasksForUser;
+	}
+	
+	public Tasks getTaskWithComments(Integer taskId){
+		Tasks task = null;
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		task = (Tasks)session.get(Tasks.class, taskId);
+		// also load the comments
+		task.getCommentsList();
+		
+		
+		return task;
+		
 	}
 	
 	public static void main(String[] args) {
 		DAOUsers daoUsers = new DAOUsers();
 		DAOTasks daoTasks = new DAOTasks();
-		Users someUser = daoUsers.read(3);
-		System.out.println("USER: " + someUser);
-		List<Tasks> myTasks = daoTasks.getTasksByUserId(someUser);
-		System.out.println("MY TASKS: " + myTasks);
+		
+		Tasks someTask = daoTasks.getTaskWithComments(14);
+		System.out.println(someTask.getTaskname());
+		System.out.println(someTask.getCommentsList());
 	}
 
 }

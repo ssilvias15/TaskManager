@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ie.silvia.dao.impl.DAOCategories;
+import ie.silvia.dao.impl.DAOComments;
 import ie.silvia.dao.impl.DAOPriority;
 import ie.silvia.dao.impl.DAOStatus;
 import ie.silvia.dao.impl.DAOTasks;
 import ie.silvia.dao.impl.DAOUsers;
 import ie.silvia.model.Categories;
+import ie.silvia.model.Comments;
 import ie.silvia.model.Priority;
 import ie.silvia.model.Status;
 import ie.silvia.model.Tasks;
@@ -31,13 +33,17 @@ public class HomeController {
 	private DAOPriority daoPriority = new DAOPriority();
 	private DAOStatus daoStatus = new DAOStatus();
 	private UsersService usersService = new UsersService(daoUsers);
+	private DAOComments daoComment = new DAOComments();
+	
+	
 	
 	public HomeController(){
 		System.out.println("CREATING CONTROLLER");
 	}
 	
-	@RequestMapping(value="/index.htm", method=RequestMethod.GET)
-	public ModelAndView viewRecentTasks(){
+	@RequestMapping(value="/recenttasks.htm", method=RequestMethod.GET)
+	public ModelAndView recentTasks(){
+		
 		List<Tasks> allTasks = dao.findAll();
 		
 		List<Tasks> recentTasks = null;
@@ -46,8 +52,31 @@ public class HomeController {
 		}else{
 			recentTasks = allTasks;
 		}
+		
+		 ModelAndView mav = new ModelAndView("tasks/recenttasks");
+		 mav.addObject("TASKS", recentTasks);
+		return mav;
+	}
+	
+	@RequestMapping(value="/index.htm", method=RequestMethod.GET)
+	public ModelAndView landingPage(){
+		
+		// page where we view most recent tasks
+		// and most recent comments associated to our tasks
+		List<Tasks> allTasks = dao.findAll();
+		
+		List<Tasks> recentTasks = null;
+		if(allTasks.size() > 5){
+			recentTasks = allTasks.subList(0, 4);
+		}else{
+			recentTasks = allTasks;
+		}
+		
+		Users currentUser = usersService.getUserFromSecurity();
+		List<Comments> recentComments = daoComment.findMostRecentComments(currentUser, dao);
 		 ModelAndView mav = new ModelAndView("index");
 		 mav.addObject("TASKS", recentTasks);
+		 mav.addObject("RECENT_COMMENTS", recentComments);
 		return mav;
 	}
 	

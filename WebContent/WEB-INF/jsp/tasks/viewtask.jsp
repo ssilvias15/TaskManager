@@ -121,6 +121,14 @@
 				COMMENT: <form:input path="commenttext"/> <br/>
 				<input type="submit" value = "save comment"/>
 			</form:form>
-
+			
+			<hr/>
+			
+		<!-- Iterate through each comment associated with the task in order to display them -->
+		<ul>	
+		<c:forEach items="${TASK.commentsList}" var="comment">
+			<li>${comment.commenttext}</li>
+		</c:forEach>
+		</ul>
 </body>
 </html>

@@ -59,7 +59,7 @@ public class TasksController {
 		fileModel.setTaskId(taskid);
 
 		model.addAttribute("fileBucket", fileModel);
-		Tasks task = dao.read(taskid);
+		Tasks task = dao.getTaskWithComments(taskid);
 
 		Comments comment = new Comments();
 		// comment.setTaskid(task);
