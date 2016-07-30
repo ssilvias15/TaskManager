@@ -1,32 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
 
-	<%@ include file="libs.jsp" %>
+
+	<%@ include file="page_components/header.jsp" %>
     
-	<title>MultiTask</title>
-</head>
 
-<body>
-
-<body>
-<!-- navbar goes here -->
-<%@ include file="navbar.jsp" %>
-
-
-<%
-	String tasksaved = request.getParameter("tasksaved");
-	if(tasksaved != null){
-		%>
-		<span style="color: #FF0000">Task has been successfully saved</span>
-		<%
-	}
-%>
-
-<article class="container-body reg-form">   
+ 
 <div class="page">
 
 
@@ -48,10 +25,5 @@
 </ul>
 
 </div>
-</article>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   <script src="resources/js/bootstrap.min.js"></script>
-   <script src="resources/js/heading.js"></script>
 
-</body>
-</html>
+<%@ include file="page_components/footer.jsp" %>

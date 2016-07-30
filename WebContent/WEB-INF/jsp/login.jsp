@@ -4,7 +4,7 @@
 
 <body>
 
-   <h1>Login page X</h1>
+   <h1>Login page</h1>
 
    <form name='f' action="login" method='POST'>
 
