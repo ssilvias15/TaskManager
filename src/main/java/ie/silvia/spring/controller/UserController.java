@@ -26,6 +26,14 @@ public class UserController {
 		return mav;
 	}
 	
+	@RequestMapping("/settings")
+	public ModelAndView settings(){
+		
+		Users currentUser = userService.getUserFromSecurity();
+		ModelAndView mav = new ModelAndView("users/settings", "command", currentUser);
+		mav.addObject("CURRENT_USER", currentUser);
+		return mav;
+	}
 
 	@RequestMapping(value = "/profile", method=RequestMethod.POST)
 	public ModelAndView viewProfile(@ModelAttribute("user")Users user){

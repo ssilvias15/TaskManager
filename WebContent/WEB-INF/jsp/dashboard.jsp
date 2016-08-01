@@ -25,18 +25,11 @@
 	%>
 	
 	 <h2>All users</h2>
-
-<div class="container">
+  <ul>
   <c:forEach items="${USERS}" var="user">
-  <div class="row">
-	<div class="col-md-2">${user.id}</div>  
-	<div class="col-md-3">${user.username}</div>
-	<div class="col-md-3"> ${user.password}</div> 
-	<div class="col-md-2"><a href="<%= request.getContextPath() %>/dashboard/edituser.htm?userid=${user.id}">Edit</a> </div>
-	<div class="col-md-2"><a href="<%= request.getContextPath() %>/dashboard/deleteuser.htm?userid=${user.id}" onclick="return confirm('Delete user ${user.username}');">Delete</a></div>
-  </div>
+  	<li> ${user.id} ${user.username} [ ${user.password} ] <a href="<%= request.getContextPath() %>/dashboard/edituser.htm?userid=${user.id}">Edit</a> <a href="<%= request.getContextPath() %>/dashboard/deleteuser.htm?userid=${user.id}" onclick="return confirm('Delete user ${user.username}');">Delete</a></li>
   </c:forEach>
-  </div>
+  </ul>
   
   <h2>All categories</h2>
     <ul>

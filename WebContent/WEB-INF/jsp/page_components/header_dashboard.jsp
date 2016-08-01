@@ -31,7 +31,7 @@
 <link
 	href="<%=request.getContextPath()%>/resources/theme/dist/css/sb-admin-2.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/resources/main.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/resources/css/main.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link
@@ -65,26 +65,7 @@
 		</div>
 		<!-- /.navbar-header -->
 
-		<ul class="nav navbar-top-links navbar-right">
-			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
-					<i class="fa fa-caret-down"></i>
-			</a>
-				<ul class="dropdown-menu dropdown-user">
-					<li><a href="#"><i class="fa fa-user fa-fw"></i> User
-							Profile</a></li>
-					<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-					</li>
-					<li class="divider"></li>
-					<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>
-							Logout</a></li>
-				</ul> <!-- /.dropdown-user --></li>
-			<!-- /.dropdown -->
-			
-			
-			
-			
-		</ul>
+		<%@ include file="profile_settings.jsp" %>
 		<!-- /.navbar-top-links -->
 
 		<div class="navbar-default sidebar" role="navigation">

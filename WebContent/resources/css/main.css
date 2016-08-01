@@ -1,19 +1,22 @@
 @CHARSET "ISO-8859-1";
 
 
- #container {
-    display: table;
-    }
-
-  #row  {
-    display: table-row;
-    }
-
-  #left, #right, #middle {
-    display: table-cell;
-    }
-    
-    
 ul{
 	list-style-type: none;
+}
+
+li.mylist:nth-child(1){
+	
+}
+li.mylist:nth-child(2){
+	
+}
+li.mylist:nth-child(3){
+	
+}
+li.mylist:nth-child(4){
+	
+}
+li.mylist:nth-child(5){
+	
 }

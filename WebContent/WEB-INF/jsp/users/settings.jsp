@@ -2,10 +2,7 @@
 
 	
 
-<h3>User information</h3>
-Username: ${CURRENT_USER.username}<br/>
-Password: ${CURRENT_USER.password}<br/>
-<hr/>
+
 
 
 
