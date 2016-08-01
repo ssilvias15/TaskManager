@@ -31,6 +31,7 @@
 <link
 	href="<%=request.getContextPath()%>/resources/theme/dist/css/sb-admin-2.css"
 	rel="stylesheet">
+<link href="<%=request.getContextPath()%>/resources/main.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link

@@ -1,6 +1,19 @@
 @CHARSET "ISO-8859-1";
 
-ul.task_list{
-	text-decoration: none;
-	font-size: xx-large;
+
+ #container {
+    display: table;
+    }
+
+  #row  {
+    display: table-row;
+    }
+
+  #left, #right, #middle {
+    display: table-cell;
+    }
+    
+    
+ul{
+	list-style-type: none;
 }

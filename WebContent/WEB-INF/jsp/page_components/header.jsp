@@ -31,7 +31,7 @@
 <link
 	href="<%=request.getContextPath()%>/resources/theme/dist/css/sb-admin-2.css"
 	rel="stylesheet">
-
+<link href="<%=request.getContextPath()%>/resources/css/main.css" rel="stylesheet">
 <!-- Custom Fonts -->
 <link
 	href="<%=request.getContextPath()%>/resources/theme/bower_components/font-awesome/css/font-awesome.min.css"

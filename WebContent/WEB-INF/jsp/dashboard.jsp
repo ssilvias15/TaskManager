@@ -23,12 +23,20 @@
 		}
 		
 	%>
+	
 	 <h2>All users</h2>
-  <ul>
+
+<div class="container">
   <c:forEach items="${USERS}" var="user">
-  	<li>${user.id} - ${user.username} [ ${user.password} ] <a href="<%= request.getContextPath() %>/dashboard/edituser.htm?userid=${user.id}">Edit</a> <a href="<%= request.getContextPath() %>/dashboard/deleteuser.htm?userid=${user.id}" onclick="return confirm('Delete user ${user.username}');">Delete</a></li>
+  <div class="row">
+	<div class="col-md-2">${user.id}</div>  
+	<div class="col-md-3">${user.username}</div>
+	<div class="col-md-3"> ${user.password}</div> 
+	<div class="col-md-2"><a href="<%= request.getContextPath() %>/dashboard/edituser.htm?userid=${user.id}">Edit</a> </div>
+	<div class="col-md-2"><a href="<%= request.getContextPath() %>/dashboard/deleteuser.htm?userid=${user.id}" onclick="return confirm('Delete user ${user.username}');">Delete</a></div>
+  </div>
   </c:forEach>
-  </ul>
+  </div>
   
   <h2>All categories</h2>
     <ul>
@@ -42,7 +50,7 @@
   <ul>
   	
   	<c:forEach items="${PRIORITIES}" var="priority">
-  		<li>${priority.id} - ${priority.priorname}  <a href="<%= request.getContextPath() %>/dashboard/editpriority.htm?priorityid=${priority.id}">Edit</a> <a href="<%= request.getContextPath() %>/dashboard/deletepriority.htm?priorityid=${priority.id}" onclick="return confirm('Delete priority ${priority.priorname}');">Delete</a></li> 
+  		<li> ${priority.id} - ${priority.priorname}  <a href="<%= request.getContextPath() %>/dashboard/editpriority.htm?priorityid=${priority.id}">Edit</a> <a href="<%= request.getContextPath() %>/dashboard/deletepriority.htm?priorityid=${priority.id}" onclick="return confirm('Delete priority ${priority.priorname}');">Delete</a></li> 
   	</c:forEach>
   </ul>
    <a href="<%= request.getContextPath() %>/dashboard/addpriority.htm">Add New Priority</a>

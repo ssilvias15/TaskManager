@@ -1,7 +1,4 @@
 	<%@ include file="page_components/header.jsp" %>
-<div class="w3-border w3-round-xlarge">
-  <h2>All tasks</h2>
-</div>
 
 <div class="w3-border w3-round-xlarge">
   <h2>All tasks</h2>
