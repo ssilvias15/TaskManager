@@ -43,7 +43,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+<script src="<%=request.getContextPath()%>/resources/js/jquery-3.1.0.js"></script>
 </head>
 
 <body>
@@ -60,7 +60,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="<%= request.getContextPath() %>/index.htm">Task Manager</a>
+			<a class="navbar-brand" href="<%= request.getContextPath() %>/index.htm">MultiTask</a>
 		</div>
 		<!-- /.navbar-header -->
 
@@ -89,20 +89,13 @@
 		<div class="navbar-default sidebar" role="navigation">
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
-					<li class="sidebar-search">
-						<div class="input-group custom-search-form">
-							<input type="text" class="form-control" placeholder="Search...">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">
-									<i class="fa fa-search"></i>
-								</button>
-							</span>
-						</div> <!-- /input-group -->
-					</li>
+					
+					<%@ include file="search.jsp" %>
+					
 					<li><a href="<%=request.getContextPath()%>/dashboard/dashboard.htm"><i
 							class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
 
-					<li><a href="#"><i class="fa fa-sitemap fa-fw"></i> Users<span
+					<li><a href="#"><i class="fa fa-users fa-fw"></i> Users<span
 							class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="<%= request.getContextPath() %>/dashboard/allusers.htm">All
@@ -114,32 +107,27 @@
 											<li><a href="#"><i class="fa fa-sitemap fa-fw"></i> Categories<span
 							class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							
+								<li><a href="<%= request.getContextPath() %>/tasks/categories/all">All Categories</a></li>
 							<li><a href="<%= request.getContextPath() %>/dashboard/addcategory.htm">Create New</a></li>
 						</ul> <!-- /.nav-second-level --></li>
 						
-						
-							<li><a href="#"><i class="fa fa-sitemap fa-fw"></i> Priorities<span
+							
+							<li><a href="#"><i class="fa fa-star fa-fw"></i>Priorities<span
 							class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							
+							<li><a href="<%= request.getContextPath() %>/tasks/priorities/all">All Priorities</a></li>
 							<li><a href="<%= request.getContextPath() %>/dashboard/addpriority.htm">Create New</a></li>
 						</ul> <!-- /.nav-second-level --></li>
 						
 						
-						<li><a href="#"><i class="fa fa-sitemap fa-fw"></i> Statuses<span
+						<li><a href="#"><i class="fa fa-flask fa-fw"></i> Statuses<span
 							class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							
+							<li><a href="<%= request.getContextPath() %>/tasks/statuses/all">All Statuses</a></li>
 							<li><a href="<%= request.getContextPath() %>/dashboard/addstatus.htm">Create New</a></li>
 						</ul> <!-- /.nav-second-level --></li>
 						
-					<li class="active"><a href="#"><i
-							class="fa fa-files-o fa-fw"></i> Sample Pages<span
-							class="fa arrow"></span></a>
-						<ul class="nav nav-second-level">
-							<li><a class="active" href="blank.html">Blank Page</a></li>
-						</ul> <!-- /.nav-second-level --></li>
+
 				</ul>
 			</div>
 			<!-- /.sidebar-collapse -->

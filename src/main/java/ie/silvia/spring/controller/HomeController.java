@@ -1,5 +1,6 @@
 package ie.silvia.spring.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -90,13 +91,27 @@ public class HomeController {
 	
 	
 	@RequestMapping(value="/mytasks.htm", method=RequestMethod.GET)
-	public ModelAndView viewMyTasks(){
+	public ModelAndView viewMyTasks(@RequestParam(value = "filterPriority", required = false) Integer priorityFilterId){
 		ModelAndView mav = new ModelAndView("mytasks");
 		Users currentUser = usersService.getUserFromSecurity();
+		List<Priority> priorities = daoPriority.findAll();
+		List<Tasks> specificPriorities = new ArrayList<>();
 		List<Tasks> tasks = dao.getTasksByUserId(currentUser);
+		if(priorityFilterId != null){
+			for(Tasks task : tasks){
+				if(task.getPriorityid() != null && task.getPriorityid().getId() != null && task.getPriorityid().getId().equals(priorityFilterId)){
+					specificPriorities.add(task);
+				}
+			}
+		}
+		
+		if(priorityFilterId != null){
+			tasks = specificPriorities;
+		}
 		mav.addObject("CURRENT_USER", currentUser);
 		mav.addObject("MY_TASKS", tasks);
-		return mav;  // WEB-INF/jsp/mytasks.jsp
+		mav.addObject("PRIORITIES", priorities);
+		return mav;  
 	}
 	
 	
