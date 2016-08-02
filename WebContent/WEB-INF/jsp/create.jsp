@@ -4,20 +4,32 @@
 
 <c:set var="thepath" value="/TaskManagerDB/save.htm?newtask=true"></c:set>
 
-PATH: ${thepath}
 
-<form:form method="POST" action="${thepath}">
-	Content: <form:input path="content"/>
+
+
+<form:form method="POST" action="${thepath}" role="form">
+  <div class="form-group">
+  <label for="content">CONTENT</label><form:input class="form-control" path="content"/>
+	</div>
 	<br/>
-	Name: <form:input path="taskname"/>
+	<label for="taskname"> Name: </label><form:input class="form-control" id="taskname" path="taskname"/>
 	<br/>
-	Category: <form:select path="categoryId" items="${OPTIONS}"></form:select>
+	 <div class="form-group">
+	<label for="catsel"> Category Name: </label>
+	<form:select path="categoryId" items="${OPTIONS}" id="catsel"></form:select>
+	</div>
 	<br/>
-	User: <form:select path="userSpringIdentifier" items="${USER_OPTIONS}"></form:select>
+	 <div class="form-group">
+	User: <form:select class="form-control" path="userSpringIdentifier" items="${USER_OPTIONS}"></form:select>
 	<br/>
-	Priority: <form:select path="prioritySpringIdentifier" items="${PRIORITY_OPTIONS}"></form:select>
+	</div>
+	 <div class="form-group">
+	Priority: <form:select class="form-control" path="prioritySpringIdentifier" items="${PRIORITY_OPTIONS}"></form:select>
 	<br/>
-	Status: <form:select path = "statusSpringIdentifier" items="${STATUS_OPTIONS}"></form:select>
-	<input type="submit"/>
+	Status: <form:select class="form-control" path = "statusSpringIdentifier" items="${STATUS_OPTIONS}"></form:select>
+	</div>
+	 <div class="form-group">
+	<input type="submit" class="btn btn-default"/>
+	</div>
 </form:form>
 	<%@ include file="page_components/footer.jsp" %>

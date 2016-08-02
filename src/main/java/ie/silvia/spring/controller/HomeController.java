@@ -36,7 +36,7 @@ public class HomeController {
 	private UsersService usersService = new UsersService(daoUsers);
 	private DAOComments daoComment = new DAOComments();
 	
-	
+	private static final int NUMBER_OF_RECENT_TASKS = 7;
 	
 	public HomeController(){
 		System.out.println("CREATING CONTROLLER");
@@ -48,8 +48,8 @@ public class HomeController {
 		List<Tasks> allTasks = dao.findAll();
 		
 		List<Tasks> recentTasks = null;
-		if(allTasks.size() > 5){
-			recentTasks = allTasks.subList(0, 4);
+		if(allTasks.size() > NUMBER_OF_RECENT_TASKS){
+			recentTasks = allTasks.subList(0, NUMBER_OF_RECENT_TASKS-1);
 		}else{
 			recentTasks = allTasks;
 		}
