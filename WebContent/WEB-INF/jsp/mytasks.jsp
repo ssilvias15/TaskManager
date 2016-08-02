@@ -11,11 +11,23 @@
 		out.println("USER: " + user.getUsername() + " " + user.getId()+"<br/>");
 	%>
 	<hr/>
-	<ul>
-	<c:forEach items="${MY_TASKS}" var="task">
-		<li>${task.id} - ${task.content}: status: ${task.statusid.statusname} <a href="<%= request.getContextPath() %>/tasks/viewtask/${task.id}">View</a>  <a href="<%= request.getContextPath() %>/tasks/edit/${task.id}">Edit</a></li>
-	</c:forEach>
-	</ul>
+
+	<div class="table-condensive">
+		<table class="table table-hover">
+			<c:forEach items="${MY_TASKS}" var="task">
+			<tr>
+				<td> ${task.id}</td>
+				<td> ${task.content} </td>
+				<td> status </td>
+				<td> ${task.statusid.statusname} </td>
+				<td> <a href="<%= request.getContextPath() %>/tasks/viewtask/${task.id}">View</a></td>
+				<td> <a href="<%= request.getContextPath() %>/tasks/edit/${task.id}">Edit</a></td>
+				</c:forEach>
+				</tr>
+				</table>
+				</div>
+
+
 	
 	<form action="<%= request.getContextPath() %>/mytasks.htm">
 		<select name="filterPriority">

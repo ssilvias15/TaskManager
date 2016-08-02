@@ -102,7 +102,7 @@
 						</ul> <!-- /.nav-second-level --></li>
 						
 						
-						<li><a href="#"><i class="fa fa-flask fa-fw"></i> Statuses<span
+						<li><a href="#"><i class="fa fa-thumb-tack fa-fw"></i> Statuses<span
 							class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="<%= request.getContextPath() %>/tasks/statuses/all">All Statuses</a></li>
