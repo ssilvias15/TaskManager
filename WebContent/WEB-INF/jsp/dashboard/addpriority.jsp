@@ -1,16 +1,14 @@
 <%@ include file="../page_components/header_dashboard.jsp" %>
-<h2>ADD PRIORITY</h2>
+<br/><h3>Add Priority</h3><br/>
 
-<!-- User add form -->
 <c:set var="thepath" value="/TaskManagerDB/dashboard/addpriority.htm"></c:set>
 
-PATH: ${thepath}
 
 <form:form method="POST" action="${thepath}">
-	Priority name: <form:input path="priorname"/>
+	<div class="form-group">Priority name <form:input class="form-control" path="priorname"/></div>
 	<br/>
 	<br/>
-	<input type="submit"/>
+	 <div class="form-group"> <input type="submit" class="btn btn-default"/></div>
 </form:form>
 
 <%@ include file="../page_components/footer.jsp" %>

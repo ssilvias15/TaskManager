@@ -16,8 +16,9 @@
 		<div class="form-group">Name<form:input class="form-control" id="taskname" path="taskname"/></div>
 		<br/>
 		
-		<div class="form-group">Content<form:input class="form-control" id="taskcontent" path="content"/></div>
+		<div class="form-group">Content<form:textarea class="form-control" id="taskcontent" path="content" rows="4" cols="30"/></div>
 		<br/>
+		
 		
 		<div class="form-group">Assignee <form:select class="form-control" id="taskuser" path="userSpringIdentifier" items="${USER_OPTIONS}"></form:select></div>
 		<br/>

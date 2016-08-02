@@ -1,15 +1,22 @@
 	<%@ include file="../page_components/header_dashboard.jsp" %>
-<div class="w3-border w3-round-xlarge">
-  <h2>All tasks</h2>
-</div>
 
-<div class="w3-border w3-round-xlarge">
-  <h2>All users</h2>
-  <ul>
-  <c:forEach items="${CATEGORIES}" var="category">
-  	<li>${category.id} - ${category.catname} <a href="<%= request.getContextPath() %>/tasks/categories/edit/${category.id}">Edit</a></li>
-  </c:forEach>
-  </ul>
-</div>
+
+	<br/><h3>All Categories</h3><br/>
+
+	<div class="table-condensive">
+		<table class="table table-hover">
+			<c:forEach items="${CATEGORIES}" var="category">
+				<tr>
+					<td>${category.id}</td>
+					<td>${category.catname}</td>
+					<td><a
+						href="<%= request.getContextPath() %>/tasks/categories/edit/${category.id}">Edit</a></td>
+					<td><a
+					href="<%= request.getContextPath() %>/dashboard/deletecategory.htm?categoryid=${category.id}"
+					onclick="return confirm('Delete category ${category.catname}');">Delete</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 
 	<%@ include file="../page_components/footer.jsp" %>

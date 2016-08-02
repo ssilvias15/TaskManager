@@ -1,17 +1,18 @@
 <%@ include file="../page_components/header_dashboard.jsp" %>
-<h2>ADD USER</h2>
+<br/><h3>Add User</h3><br/>
 
 <!-- User add form -->
 <c:set var="thepath" value="/TaskManagerDB/dashboard/adduser.htm"></c:set>
 
-PATH: ${thepath}
-
 <form:form method="POST" action="${thepath}">
-	Username: <form:input path="username"/>
+	<div class="form-group">Username<form:input class="form-control" path="username" />
+	</div>
+	
+	<div class="form-group">Password<form:input class="form-control" path="password" />
+	</div>
 	<br/>
-	Password: <form:input path="password"/>
-	<br/>
-	<input type="submit"/>
+	
+	<div class="form-group"><input type="submit" class="btn btn-default"/></div>
 </form:form>
 
 
