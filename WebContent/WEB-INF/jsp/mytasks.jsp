@@ -21,9 +21,8 @@
 				<td> status </td>
 				<td> ${task.statusid.statusname} </td>
 				<td> <a href="<%= request.getContextPath() %>/tasks/viewtask/${task.id}">View</a></td>
-				<td> <a href="<%= request.getContextPath() %>/tasks/edit/${task.id}">Edit</a></td>
+				<td> <a href="<%= request.getContextPath() %>/tasks/edit/${task.id}">Edit</a></td></tr>
 				</c:forEach>
-				</tr>
 				</table>
 				</div>
 
