@@ -67,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     	
     	http.csrf().disable();
 
-
+    	http.authorizeRequests().antMatchers("/dashboard*").access("hasRole('ROLE_ADMIN')");
     	
 //	  http.authorizeRequests().anyRequest().access("hasRole('USER')");
 
