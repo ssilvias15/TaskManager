@@ -5,18 +5,36 @@
 
 	<%@ include file="../page_components/header.jsp" %>
 
-		<div class="w3-border w3-round-xlarge">
-			<h2>View task</h2>
+			<h3>View Task</h3>
+			
 			<a href="<%= request.getContextPath() %>/tasks/edit/${TASK.id}">Edit</a><br/><br/>
-			Title: ${TASK.taskname}<br /> Assigned to user:
-			${TASK.userid.username} <br />
-			<hr />
-			Priority: ${TASK.priorityid.priorname}<br /> Category:
-			${TASK.catid.catname}<br /> Status: ${TASK.statusid.statusname}<br />
-			Content: ${TASK.content} </br>
 
+<div class="table-condensive">
+	<table class="table table-hover">
+		<tr>
+			<td>Task Name</td>
+			<td>${TASK.taskname}</td>
+		</tr>
+		<tr>
+			<td>Assignee </td><td>${TASK.userid.username}</td>
+		</tr>
+		<tr>
+			<td>Priority</td> <td>${TASK.priorityid.priorname}</td>
+		</tr>
+		<tr>
+			<td>Category</td> <td>${TASK.catid.catname}</td>
+		</tr>
+		<tr>
+			<td>Status</td> <td>${TASK.statusid.statusname}</td>
+		</tr>
+		<tr>
+			<td>Content</td> <td>${TASK.content}</td>
+		</tr>
+	</table>
+</div>
 
-			<hr/>
+<hr/>
+			<br/><h3>Attachments</h3><br/>
 			
 			<!-- Spring upload form -->
 
@@ -47,8 +65,6 @@
 
 				</div>
 
-
-
 				<div class="row">
 
 					<div class="form-actions floatRight">
@@ -62,15 +78,15 @@
 			</form:form>
 			<!-- /Spring upload form -->
 			<hr />
-			<h2>Attachments</h2>
+			
 			<%
 				Tasks task = (Tasks) request.getAttribute("TASK");				
-				out.println("CURRENT TASK ID: " + task.getId());
+				out.println("Current Task Number: \n" + task.getId()); 
 				List<String> attachmentNames = UploadService.getFilesInTaskDirectory(task.getId());
 
 				if (attachmentNames.size() == 0) {
 			%>
-				<span style="color: #0000FF;">No attachments</span>
+				<span style="color: #0000FF;">: No attachments for this task</span>
 			<%
 				} else {
 
@@ -87,14 +103,15 @@
 
 
 
-	<hr />
+	<hr /><br/>
+	<h3>Comments</h3><br/>
 			<c:set var="thepathVT" value="/TaskManagerDB/tasks/viewtask"></c:set>
 			<form:form method="POST" action="${thepathVT}" 
 				
 				class="form-horizontal">
 				<form:hidden path="springTaskId" />
-				COMMENT: <form:input path="commenttext"/> <br/>
-				<input type="submit" value = "save comment"/>
+				<br/>Add Comment <form:input path="commenttext"/> <br/><br/>
+				<input type="submit" value = "Save Comment"/>
 			</form:form>
 			
 			<hr/>

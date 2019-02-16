@@ -1,12 +1,21 @@
 <%@ include file="../page_components/header_dashboard.jsp" %>
 
-<h2>View all statuses</h2>
-<div class="w3-border w3-round-xlarge">
-  <h2>All Statuses</h2>
-  <ul>
-  <c:forEach items="${STATUSES}" var="status">
-  	<li>${status.id} - ${status.statusname} <a href="<%= request.getContextPath() %>/tasks/statuses/edit/${status.id}">Edit</a></li>
-  </c:forEach>
-  </ul>
-</div>
-<%@ include file="../page_components/footer.jsp" %>
+  <br/><h3>All Statuses</h3><br/>
+  
+	<div class="table-condensive">
+		<table class="table table-hover">
+			<c:forEach items="${STATUSES}" var="status">
+				<tr>
+					<td>${status.id}</td>
+					<td>${status.statusname}</td>
+					<td><a
+						href="<%= request.getContextPath() %>/tasks/statuses/edit/${status.id}">Edit</a></td>
+						<td><a
+					href="<%= request.getContextPath() %>/dashboard/deletestatus.htm?statusid=${status.id}"
+					onclick="return confirm('Delete status ${status.statusname}');">Delete</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+
+	<%@ include file="../page_components/footer.jsp" %>

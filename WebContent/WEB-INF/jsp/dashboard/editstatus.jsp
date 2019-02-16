@@ -1,17 +1,15 @@
 <%@ include file="../page_components/header_dashboard.jsp" %>
-<h2>EDIT STATUS</h2>
+<br/><h3>Edit Status</h3><br/>
 
 
-<!-- Status add form -->
 <c:set var="thepath" value="/TaskManagerDB/dashboard/editstatus.htm"></c:set>
 
-PATH: ${thepath}
-
 <form:form method="POST" action="${thepath}">
-	Status ID: <form:input path="id"/>
-	Status name: <form:input path="statusname"/>
+	<div class="form-group">Status ID<form:input class="form-control" path="id"/></div>
+	<div class="form-group">Status Name <form:input class="form-control" path="statusname"/></div>
 	<br/>
-	<input type="submit"/>
+	<div class="form-group"> <input type="submit" class="btn btn-default"/></div>
 </form:form>
 
 <%@ include file="../page_components/footer.jsp" %>
+

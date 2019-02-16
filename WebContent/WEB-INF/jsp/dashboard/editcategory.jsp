@@ -1,13 +1,12 @@
 <%@ include file="../page_components/header_dashboard.jsp" %>
-<h2>Edit category</h2>
+<br/><h3>Edit category</h3><br/>
 <c:set var="thepath" value="/TaskManagerDB/dashboard/editcategory.htm"></c:set>
 
-PATH: ${thepath}
 
 <form:form method="POST" action="${thepath}">
-	Category ID: <form:input path="id"/>
-	Category name: <form:input path="catname"/>
+	 <div class="form-group">Category ID<form:input class="form-control" path="id"/></div>
+	 <div class="form-group">Category Name<form:input class="form-control" path="catname"/></div>
 	<br/>
-	<input type="submit"/>
+	<div class="form-group"> <input type="submit" class="btn btn-default"/></div>
 </form:form>
 <%@ include file="../page_components/footer.jsp" %>
